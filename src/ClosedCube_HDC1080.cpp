@@ -41,15 +41,7 @@ void ClosedCube_HDC1080::begin(uint8_t address) {
 	_address = address;
 	Wire.begin();
 
-<<<<<<< HEAD
         // Heater off, 14 bit Temperature and Humidity Measurement Resolution 
-=======
-	/*
-	 Heater disabled, 
-	 Temperature and Humidity Measurement Resolution 14 bit
-	*/
-	
->>>>>>> origin/master
 	Wire.beginTransmission(_address);
 	Wire.write(CONFIGURATION);
 	Wire.write(0x0);
