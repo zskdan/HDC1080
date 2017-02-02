@@ -6,7 +6,7 @@ Written by AA for ClosedCube
 
 The MIT License (MIT)
 
-Copyright (c) 2016 ClosedCube Limited
+Copyright (c) 2016-2017 ClosedCube Limited
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -41,10 +41,7 @@ void ClosedCube_HDC1080::begin(uint8_t address) {
 	_address = address;
 	Wire.begin();
 
-	/*
-	 Heater disabled, 
-	 Temperature and Humidity Measurement Resolution 14 bit
-	*/
+        // Heater off, 14 bit Temperature and Humidity Measurement Resolution 
 	Wire.beginTransmission(_address);
 	Wire.write(CONFIGURATION);
 	Wire.write(0x0);
@@ -52,6 +49,42 @@ void ClosedCube_HDC1080::begin(uint8_t address) {
 	Wire.endTransmission();
 
 }
+
+HDC1080_Registers ClosedCube_HDC1080::readRegister() {
+	HDC1080_Registers reg;
+	reg.rawData = (readData(CONFIGURATION) >> 8);
+	return reg;
+}
+
+void ClosedCube_HDC1080::writeRegister(HDC1080_Registers reg) {
+	Wire.beginTransmission(_address);
+	Wire.write(CONFIGURATION);
+	Wire.write(reg.rawData);
+	Wire.write(0x00);
+	Wire.endTransmission();
+	delay(10);
+}
+
+void ClosedCube_HDC1080::heatUp(uint8_t seconds) {
+	HDC1080_Registers reg = readRegister();
+	reg.Heater = 1;
+	reg.ModeOfAcquisition = 1;
+	writeRegister(reg);
+
+	uint8_t buf[4];
+	for (int i = 1; i < (seconds*66); i++) {
+		Wire.beginTransmission(_address);
+		Wire.write(0x00);
+		Wire.endTransmission();
+		delay(20);
+		Wire.requestFrom(_address, (uint8_t)4);
+		Wire.readBytes(buf, (size_t)4);
+	}
+	reg.Heater = 0;
+	reg.ModeOfAcquisition = 0;
+	writeRegister(reg);
+}
+
 
 float ClosedCube_HDC1080::readT() {
 	return readTemperature();
@@ -84,7 +117,7 @@ uint16_t ClosedCube_HDC1080::readData(uint8_t pointer) {
 	Wire.write(pointer);
 	Wire.endTransmission();
 	
-	delay(10);
+	delay(9);
 	Wire.requestFrom(_address, (uint8_t)2);
 
 	byte msb = Wire.read();

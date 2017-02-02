@@ -6,7 +6,7 @@ Written by AA for ClosedCube
 
 The MIT License (MIT)
 
-Copyright (c) 2016 ClosedCube Limited
+Copyright (c) 2016-2017 ClosedCube Limited
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -44,6 +44,19 @@ typedef enum {
 	SERIAL_ID_LAST = 0xFD,
 } HDC1080_Pointers;
 
+typedef union {
+	uint8_t rawData;
+	struct {
+		uint8_t HumidityMeasurementResolution : 2;
+		uint8_t TemperatureMeasurementResolution : 1;
+		uint8_t BatteryStatus : 1;
+		uint8_t ModeOfAcquisition : 1;
+		uint8_t Heater : 1;
+		uint8_t ReservedAgain : 1;
+		uint8_t SoftwareReset : 1;
+	};
+} HDC1080_Registers;
+
 class ClosedCube_HDC1080 {
 public:
 	ClosedCube_HDC1080();
@@ -51,6 +64,11 @@ public:
 	void begin(uint8_t address);
 	uint16_t readManufacturerId(); // 0x5449 ID of Texas Instruments
 	uint16_t readDeviceId(); // 0x1050 ID of the device
+
+	HDC1080_Registers readRegister();	
+	void writeRegister(HDC1080_Registers reg);
+
+	void heatUp(uint8_t seconds);
 	
 	float readTemperature();
 	float readHumidity();

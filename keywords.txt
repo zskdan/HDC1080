@@ -21,3 +21,8 @@ readHumidity KEYWORD2
 
 readT KEYWORD2
 readH KEYWORD2
+
+readRegister KEYWORD2
+writeRegister KEYWORD2
+
+heatUp KEYWORD2
