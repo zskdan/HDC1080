@@ -26,6 +26,7 @@ void setup()
 	Serial.begin(9600);
 	Serial.println("ClosedCube HDC1080 Arduino Test");
 
+        // Heater off, 14 bit Temperature and Humidity Measurement Resolution 
 	hdc1080.begin(0x40);
 
 	Serial.print("Manufacturer ID=0x");
