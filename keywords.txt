@@ -29,3 +29,4 @@ writeRegister KEYWORD2
 heatUp KEYWORD2
 
 readSerialNumber KEYWORD2
+setResolution KEYWORD2
