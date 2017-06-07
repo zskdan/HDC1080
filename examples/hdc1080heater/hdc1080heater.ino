@@ -27,13 +27,17 @@ void setup()
 	Serial.println("ClosedCube HDC1080 [Heater] Arduino Test");
 	Serial.println();
 
-        // Heater off, 14 bit Temperature and Humidity Measurement Resolution 
+	// Default settings: 
+	//  - Heater off
+	//  - 14 bit Temperature and Humidity Measurement Resolutions
 	hdc1080.begin(0x40);
 
 	Serial.print("Manufacturer ID=0x");
 	Serial.println(hdc1080.readManufacturerId(), HEX); // 0x5449 ID of Texas Instruments
 	Serial.print("Device ID=0x");
 	Serial.println(hdc1080.readDeviceId(), HEX); // 0x1050 ID of the device
+
+	printSerialNumber();
 	
 	uint8_t huTime = 10;
 	Serial.print("Heating up for approx. ");
@@ -82,4 +86,12 @@ void printRegister(HDC1080_Registers reg) {
 	Serial.print("RH Measurement Resolution: ");
 	Serial.print(reg.HumidityMeasurementResolution, BIN);
 	Serial.println(" (00=14 bit, 01=11 bit, 10=8 bit)");
+}
+
+void printSerialNumber() {
+	Serial.print("Device Serial Number=");
+	HDC1080_SerialNumber sernum = hdc1080.readSerialNumber();
+	char format[12];
+	sprintf(format, "%02X-%04X-%04X", sernum.serialFirst, sernum.serialMid, sernum.serialLast);
+	Serial.println(format);
 }

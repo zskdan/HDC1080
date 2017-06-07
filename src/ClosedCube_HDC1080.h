@@ -34,15 +34,24 @@ THE SOFTWARE.
 #include <Arduino.h>
 
 typedef enum {
-	TEMPERATURE = 0x00,
-	HUMIDITY = 0x01,
-	CONFIGURATION = 0x02,
-	MANUFACTURER_ID = 0xFE,
-	DEVICE_ID = 0xFF,
-	SERIAL_ID_FIRST = 0xFB,
-	SERIAL_ID_MID = 0xFC,
-	SERIAL_ID_LAST = 0xFD,
+	HDC1080_TEMPERATURE		= 0x00,
+	HDC1080_HUMIDITY		= 0x01,
+	HDC1080_CONFIGURATION	= 0x02,
+	HDC1080_MANUFACTURER_ID = 0xFE,
+	HDC1080_DEVICE_ID		= 0xFF,
+	HDC1080_SERIAL_ID_FIRST	= 0xFB,
+	HDC1080_SERIAL_ID_MID	= 0xFC,
+	HDC1080_SERIAL_ID_LAST	= 0xFD,
 } HDC1080_Pointers;
+
+typedef union {
+	uint8_t rawData[6];
+	struct {
+		uint16_t serialFirst;
+		uint16_t serialMid;
+		uint16_t serialLast;
+	};
+} HDC1080_SerialNumber;
 
 typedef union {
 	uint8_t rawData;
@@ -67,6 +76,8 @@ public:
 
 	HDC1080_Registers readRegister();	
 	void writeRegister(HDC1080_Registers reg);
+
+	HDC1080_SerialNumber readSerialNumber();
 
 	void heatUp(uint8_t seconds);
 	

@@ -41,24 +41,33 @@ void ClosedCube_HDC1080::begin(uint8_t address) {
 	_address = address;
 	Wire.begin();
 
-        // Heater off, 14 bit Temperature and Humidity Measurement Resolution 
+	// Heater off, 14 bit Temperature and Humidity Measurement Resolution 
 	Wire.beginTransmission(_address);
-	Wire.write(CONFIGURATION);
+	Wire.write(HDC1080_CONFIGURATION);
 	Wire.write(0x0);
 	Wire.write(0x0);
 	Wire.endTransmission();
 
 }
 
+
+HDC1080_SerialNumber ClosedCube_HDC1080::readSerialNumber() {
+	HDC1080_SerialNumber sernum;
+	sernum.serialFirst = readData(HDC1080_SERIAL_ID_FIRST);
+	sernum.serialMid = readData(HDC1080_SERIAL_ID_MID);
+	sernum.serialLast = readData(HDC1080_SERIAL_ID_LAST);
+	return sernum;
+}
+
 HDC1080_Registers ClosedCube_HDC1080::readRegister() {
 	HDC1080_Registers reg;
-	reg.rawData = (readData(CONFIGURATION) >> 8);
+	reg.rawData = (readData(HDC1080_CONFIGURATION) >> 8);
 	return reg;
 }
 
 void ClosedCube_HDC1080::writeRegister(HDC1080_Registers reg) {
 	Wire.beginTransmission(_address);
-	Wire.write(CONFIGURATION);
+	Wire.write(HDC1080_CONFIGURATION);
 	Wire.write(reg.rawData);
 	Wire.write(0x00);
 	Wire.endTransmission();
@@ -91,7 +100,7 @@ float ClosedCube_HDC1080::readT() {
 }
 
 float ClosedCube_HDC1080::readTemperature() {
-	uint16_t rawT = readData(TEMPERATURE);
+	uint16_t rawT = readData(HDC1080_TEMPERATURE);
 	return (rawT / pow(2, 16)) * 165 - 40;
 }
 
@@ -100,16 +109,16 @@ float ClosedCube_HDC1080::readH() {
 }
 
 float ClosedCube_HDC1080::readHumidity() {
-	uint16_t rawH = readData(HUMIDITY);
+	uint16_t rawH = readData(HDC1080_HUMIDITY);
 	return (rawH / pow(2, 16)) * 100;
 }
 
 uint16_t ClosedCube_HDC1080::readManufacturerId() {
-	return readData(MANUFACTURER_ID);
+	return readData(HDC1080_MANUFACTURER_ID);
 }
 
 uint16_t ClosedCube_HDC1080::readDeviceId() {
-	return readData(DEVICE_ID);
+	return readData(HDC1080_DEVICE_ID);
 }
 
 uint16_t ClosedCube_HDC1080::readData(uint8_t pointer) {
