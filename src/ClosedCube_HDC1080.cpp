@@ -41,15 +41,31 @@ void ClosedCube_HDC1080::begin(uint8_t address) {
 	_address = address;
 	Wire.begin();
 
-	// Heater off, 14 bit Temperature and Humidity Measurement Resolution 
-	Wire.beginTransmission(_address);
-	Wire.write(HDC1080_CONFIGURATION);
-	Wire.write(0x0);
-	Wire.write(0x0);
-	Wire.endTransmission();
-
+	setResolution(HDC1080_RESOLUTION_14BIT, HDC1080_RESOLUTION_14BIT);
 }
 
+void ClosedCube_HDC1080::setResolution(HDC1080_MeasurementResolution humidity, HDC1080_MeasurementResolution temperature) {
+	HDC1080_Registers reg;
+	reg.HumidityMeasurementResolution = 0;
+	reg.TemperatureMeasurementResolution = 0;
+
+	if (temperature == HDC1080_RESOLUTION_11BIT)
+		reg.TemperatureMeasurementResolution = 0x01;
+
+	switch (humidity)
+	{
+		case HDC1080_RESOLUTION_8BIT:
+			reg.HumidityMeasurementResolution = 0x02;
+			break;
+		case HDC1080_RESOLUTION_11BIT:
+			reg.HumidityMeasurementResolution = 0x01;
+			break;
+		default:
+			break;
+	}
+
+	writeRegister(reg);
+}
 
 HDC1080_SerialNumber ClosedCube_HDC1080::readSerialNumber() {
 	HDC1080_SerialNumber sernum;

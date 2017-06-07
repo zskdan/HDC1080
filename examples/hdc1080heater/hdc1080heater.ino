@@ -24,7 +24,7 @@ ClosedCube_HDC1080 hdc1080;
 void setup()
 {
 	Serial.begin(9600);
-	Serial.println("ClosedCube HDC1080 [Heater] Arduino Test");
+	Serial.println("ClosedCube HDC1080 Heater Arduino Test");
 	Serial.println();
 
 	// Default settings: 

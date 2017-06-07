@@ -34,6 +34,12 @@ THE SOFTWARE.
 #include <Arduino.h>
 
 typedef enum {
+	HDC1080_RESOLUTION_8BIT,
+	HDC1080_RESOLUTION_11BIT,
+	HDC1080_RESOLUTION_14BIT,
+} HDC1080_MeasurementResolution;
+
+typedef enum {
 	HDC1080_TEMPERATURE		= 0x00,
 	HDC1080_HUMIDITY		= 0x01,
 	HDC1080_CONFIGURATION	= 0x02,
@@ -81,6 +87,8 @@ public:
 
 	void heatUp(uint8_t seconds);
 	
+	void setResolution(HDC1080_MeasurementResolution humidity, HDC1080_MeasurementResolution temperature);
+
 	float readTemperature();
 	float readHumidity();
 
