@@ -89,11 +89,11 @@ public:
 	
 	void setResolution(HDC1080_MeasurementResolution humidity, HDC1080_MeasurementResolution temperature);
 
-	float readTemperature();
-	float readHumidity();
+	double readTemperature();
+	double readHumidity();
 
-	float readT(); // short-cut for readTemperature
-	float readH(); // short-cut for readHumidity
+	double readT(); // short-cut for readTemperature
+	double readH(); // short-cut for readHumidity
 
 private:
 	uint8_t _address;

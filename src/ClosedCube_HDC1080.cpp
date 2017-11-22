@@ -111,22 +111,22 @@ void ClosedCube_HDC1080::heatUp(uint8_t seconds) {
 }
 
 
-float ClosedCube_HDC1080::readT() {
+double ClosedCube_HDC1080::readT() {
 	return readTemperature();
 }
 
-float ClosedCube_HDC1080::readTemperature() {
+double ClosedCube_HDC1080::readTemperature() {
 	uint16_t rawT = readData(HDC1080_TEMPERATURE);
-	return (rawT / pow(2, 16)) * 165 - 40;
+	return (rawT / pow(2, 16)) * 165.0 - 40.0;
 }
 
-float ClosedCube_HDC1080::readH() {
+double ClosedCube_HDC1080::readH() {
 	return readHumidity();
 }
 
-float ClosedCube_HDC1080::readHumidity() {
+double ClosedCube_HDC1080::readHumidity() {
 	uint16_t rawH = readData(HDC1080_HUMIDITY);
-	return (rawH / pow(2, 16)) * 100;
+	return (rawH / pow(2, 16)) * 100.0;
 }
 
 uint16_t ClosedCube_HDC1080::readManufacturerId() {
