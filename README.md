@@ -27,7 +27,7 @@ This is breakout board for [Texas Instruments HDC1080](http://www.ti.com/product
 | USA | TBD | TBD |
 
 
-[![](http://images.closedcube.uk/logo/github/ebay.gif)](http://www.ebay.co.uk/itm/182877251201)
+[![](http://images.closedcube.uk/logo/github/ebay.gif)](http://www.ebay.co.uk/itm/182129971333)
 
 | Region  | Link |
 | ------------- | ------------- |
