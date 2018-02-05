@@ -13,6 +13,20 @@ This is breakout board for [Texas Instruments HDC1080](http://www.ti.com/product
 ---
 ### Where to Buy?
 
+[![](http://images.closedcube.uk/logo/github/amazon.png)](https://www.amazon.co.uk/dp/B01GBOGNFE)
+
+| Region  | Link for 2 pcs | Link for 2 pcs (Right-Angle) |
+| ------------- | ------------- |------------- |
+| Canada | TBD |TBD |
+| Germany (DE) | https://www.amazon.de/dp/B01GBOGNFE |  TBD |
+| France (FR) | https://www.amazon.fr/dp/B01GBOGNFE | TBD |
+| Italy (IT) | https://www.amazon.it/dp/B01GBOGNFE | TBD |
+| Mexico | TBD | TDB |
+| Spain (ES) | https://www.amazon.es/dp/B01GBOGNFE | TBD |
+| UK | https://www.amazon.co.uk/dp/B01MY4BG6H | TBD |
+| USA | TBD | TBD |
+
+
 <a href="https://www.amazon.co.uk/ClosedCube-Accuracy-Humidity-Temperature-Breakout/dp/B01GBOGNFE">
 <img src="https://images-na.ssl-images-amazon.com/images/G/01/SellerCentral/legal/amazon-logo_black.png" width="145" height="70"/></a> <a href="https://www.amazon.co.uk/ClosedCube-Accuracy-Humidity-Temperature-Breakout/dp/B01GBOGNFE">UK</a>
 
