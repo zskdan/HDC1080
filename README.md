@@ -23,7 +23,7 @@ This is breakout board for [Texas Instruments HDC1080](http://www.ti.com/product
 | Italy (IT) | https://www.amazon.it/dp/B01GBOGNFE | TBD |
 | Mexico | TBD | TDB |
 | Spain (ES) | https://www.amazon.es/dp/B01GBOGNFE | TBD |
-| UK | https://www.amazon.co.uk/dp/B01MY4BG6H | TBD |
+| UK | https://www.amazon.co.uk/dp/B01GBOGNFE | TBD |
 | USA | TBD | TBD |
 
 
