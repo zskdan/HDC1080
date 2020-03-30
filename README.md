@@ -17,14 +17,11 @@ This is breakout board for [Texas Instruments HDC1080](http://www.ti.com/product
 
 | Region  | Link for 2 pcs | Link for 2 pcs (Right-Angle) |
 | ------------- | ------------- |------------- |
-| Canada | TBD |TBD |
-| Germany (DE) | https://www.amazon.de/dp/B01GBOGNFE |  TBD |
-| France (FR) | https://www.amazon.fr/dp/B01GBOGNFE | TBD |
-| Italy (IT) | https://www.amazon.it/dp/B01GBOGNFE | TBD |
-| Mexico | TBD | TDB |
-| Spain (ES) | https://www.amazon.es/dp/B01GBOGNFE | TBD |
-| UK | https://www.amazon.co.uk/dp/B01GBOGNFE | TBD |
-| USA | TBD | TBD |
+| Germany (DE) | https://www.amazon.de/dp/B01GBOGNFE |  https://www.amazon.de/dp/B085XKGQBR |
+| France (FR) | https://www.amazon.fr/dp/B01GBOGNFE | https://www.amazon.fr/dp/B085XKGQBR |
+| Italy (IT) | https://www.amazon.it/dp/B01GBOGNFE | https://www.amazon.it/dp/B085XKGQBR |
+| Spain (ES) | https://www.amazon.es/dp/B01GBOGNFE | https://www.amazon.es/dp/B085XKGQBR |
+| UK | https://www.amazon.co.uk/dp/B01GBOGNFE | https://www.amazon.co.uk/dp/B085XKGQBR |
 
 
 [![](http://images.closedcube.uk/logo/github/ebay.gif)](http://www.ebay.co.uk/itm/182129971333)
