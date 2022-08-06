@@ -87,7 +87,6 @@ void ClosedCube_HDC1080::writeRegister(HDC1080_Registers reg) {
 	Wire.write(reg.rawData);
 	Wire.write(0x00);
 	Wire.endTransmission();
-	delay(10);
 }
 
 void ClosedCube_HDC1080::heatUp(uint8_t seconds) {
@@ -142,7 +141,6 @@ uint16_t ClosedCube_HDC1080::readData(uint8_t pointer) {
 	Wire.write(pointer);
 	Wire.endTransmission();
 	
-	delay(9);
 	Wire.requestFrom(_address, (uint8_t)2);
 
 	byte msb = Wire.read();
